@@ -1,0 +1,50 @@
+# ── Python ──────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# ── Virtual environments ─────────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+
+# ── Jupyter / IPython ────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── PyTorch checkpoints & model weights ─────────────────────────
+*.pt
+*.pth
+*.ckpt
+
+# ── Dataset archives (large binary — download at runtime) ────────
+*.tar.gz
+*.zip
+*.gz
+
+# ── CIFAR-10 raw data ────────────────────────────────────────────
+cifar-10-batches-py/
+data/
+
+# ── Generated plots (reproducible, not source) ───────────────────
+plots/
+plots_cuda/
+plots_cuda_100/
+plots_cuda_best/
+plots_cuda_lambda_sweep_100/
+eval_results/
+
+# ── OS / editor junk ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
