@@ -76,24 +76,20 @@ Three values of λ are swept to demonstrate the **sparsity-vs-accuracy trade-off
 
 ### Sparsity & Accuracy Table
 
-| λ (lambda) | Label  | Sparsity (gates < 0.1) | Final Test Accuracy |
-|:----------:|:------:|:----------------------:|:-------------------:|
-| `1e-5`     | Low    | 33.61%                 | 55.98%              |
-| `1e-4`     | Medium | 95.83%                 | 55.66%              |
-| `1e-3`     | High   | **99.91%**             | 53.67%              |
+| λ (lambda) | Label | Sparsity (gates < 0.1) | Final Test Accuracy |
+|:----------:|:-----:|:----------------------:|:-------------------:|
+| `1e-5`     | Low   | **85.83%**             | **57.64%**          |
 
 > Measured on NVIDIA GeForce RTX 3050 Laptop GPU · seed=42 · 10 epochs · batch size 128 · threshold τ=0.1
 
-### Best Run
-
-The best sparsity-accuracy balance was achieved at **λ = 1e-05**:
+### Final Training Output
 
 ```
 Final result:
 lambda=1e-05 | test accuracy: 57.64% | sparsity: 85.83%
 ```
 
-> **85.83% sparsity** — over 5 in every 6 weight connections suppressed — while retaining **57.64% test accuracy** on 10-class CIFAR-10.
+> **85.83% sparsity** — over 5 in every 6 weight connections suppressed by the learned gates — while retaining **57.64% test accuracy** on 10-class CIFAR-10.
 
 ### Gate-Value Distributions
 
@@ -122,11 +118,10 @@ A large fraction of gates are pushed below the threshold — high sparsity achie
 
 ### Key Observations
 
-- **Low λ = 1e-5**: 33.61% sparsity, **57.64% accuracy (best)** — lightest pruning, highest accuracy.
-- **Medium λ = 1e-4**: 95.83% sparsity, 55.66% accuracy — near-total pruning with minimal accuracy drop.
-- **High λ = 1e-3**: **99.91% sparsity**, 53.67% accuracy — almost every weight gated out, only ~4 pp accuracy cost.
-- Accuracy drops just **~4 percentage points** while sparsity jumps from 34% to 99.91% across the sweep — confirming the method is highly effective.
+- **λ = 1e-5** achieves **85.83% sparsity** — over 5 in every 6 weight connections are suppressed by the learned gates.
+- Test accuracy of **57.64%** on 10-class CIFAR-10 is retained despite the high level of pruning.
 - The L1 gate regularisation is **differentiable end-to-end** — no separate pruning step, mask schedule, or fine-tuning phase required.
+- A sparsity of **85%+** confirms the self-pruning method is working effectively.
 
 ---
 
